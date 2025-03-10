@@ -4,15 +4,10 @@ import FormInput from "@/components/form-input";
 import SocialLogin from "@/components/social-login";
 
 export default function LogIn(){
-    // const handlerForm = async () => {
-    //     "use server";
-    // console.log("i run in the server baby!")
-    // }
     async function handlerForm(data:FormData) {
         "use server";
-        console.log(data);
-        console.log("i run in the server baby!")
-
+        await new Promise((resolve) => setTimeout(resolve, 5000));
+        console.log("Logged in!")
     }
 
     return (
@@ -24,7 +19,7 @@ export default function LogIn(){
             <form action={handlerForm} className="flex flex-col gap-3">
                 <FormInput name="email" type="email" placeholder="Email" required errors={[]}/>
                 <FormInput name="password" type="password" placeholder="Password" required errors={[]}/>
-                <FormButton loading={false} text="Login"/>
+                <FormButton text="Login"/>
             </form>
             <SocialLogin />
         </div>
