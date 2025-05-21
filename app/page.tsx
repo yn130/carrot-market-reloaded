@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "@/lib/db";
 
 export default function Home() {
   return (
@@ -8,7 +9,7 @@ export default function Home() {
         <h1 className="text-4xl">Carrot</h1>
         <h2 className="text-2xl">Welcome to Carrot Market!</h2>
       </div>
-      <div className="flex flex-col items-center gap-3 w-full">
+      <div className="flex flex-col items-center w-full gap-3">
         <Link href="/create-account" className="primary-btn text-lg py-2.5">Start!</Link>
         <div className="flex gap-2">
           <span>Do you already have an account? </span>
