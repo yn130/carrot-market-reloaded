@@ -18,7 +18,7 @@ export default function CreateAccount(){
                 <FormInput name="username" type="text" placeholder="Username" required errors={state?.fieldErrors.username}/>
                 <FormInput name="email" type="email" placeholder="Email" required errors={state?.fieldErrors.email} />
                 <FormInput name="password" type="password" placeholder="Password" required errors={state?.fieldErrors.password} />
-                <FormInput name='comfirmPassword' type="password" placeholder="Confirm Password" required errors={state?.fieldErrors.confirmPassword}/>
+                <FormInput name="confirmPassword" type="password" placeholder="Confirm Password" required errors={state?.fieldErrors.confirmPassword}/>
                 <FormButton text="Create Account"/>
             </form>
             <SocialLogin />

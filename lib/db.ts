@@ -39,14 +39,14 @@ const db = new PrismaClient();
 // test(); 
 
 //4. 테스트 코드 
-async function test() {
-    const token = await db.sMSToken.findUnique({
-        where: {
-            id: 1,
-        },
-    });
-    console.log(token);
-}
+// async function test() {
+//     const token = await db.sMSToken.findUnique({
+//         where: {
+//             id: 1,
+//         },
+//     });
+//     console.log(token);
+// }
 // test(); 
 
 export default db;
