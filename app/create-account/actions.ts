@@ -1,9 +1,10 @@
 "use server"
+import { PASSWORD_MIN_LENGTH, PASSWORD_REGEX, PASSWORD_REGEX_ERROR } from "@/lib/constants";
 import {z} from "zod";
 
-const passwordRegex = new RegExp(
-/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$%^&*-]).+$/
-);
+// const passwordRegex = new RegExp(
+// /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$%^&*-]).+$/
+// );
 function checkUsername(username:string){
     return !username.includes("potato");
 }
@@ -17,8 +18,8 @@ const formSchema = z.object({
         invalid_type_error: "Username must be a string",
         required_error: "Where is your username?",
     })
-    .min(3, "Way too short!!")
-    .max(20, "That is too long!!!")
+    // .min(3, "Way too short!!")
+    // .max(10, "That is too long!!!")
     .toLowerCase() //대문자 자동으로 소문자로 전환
     .trim() //공백 자동으로 제거
     // .transform((username) => username.replace(/ /g, "")), //공백 자동으로 제거
@@ -27,8 +28,8 @@ const formSchema = z.object({
     // .refine((username) => !username.includes
     .refine(checkUsername,"No potatos allowed!"),
     email: z.string().email().toLowerCase(),
-    password: z.string().min(4).regex(passwordRegex, "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character"),
-    confirmPassword: z.string().min(4).regex(passwordRegex),
+    password: z.string().min(4).regex(PASSWORD_REGEX,PASSWORD_REGEX_ERROR), 
+    confirmPassword: z.string().min(PASSWORD_MIN_LENGTH).regex(PASSWORD_REGEX),
 })
 .refine(checkPassword, {
     message: "Both Passwords must be the same!",
